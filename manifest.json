@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Formality Template Injector",
+  "version": "1.0",
+  "description": "Injects context-specific templates into Outlook Web.",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://outlook.live.com/*",
+    "*://outlook.office.com/*",
+    "*://outlook.office365.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
