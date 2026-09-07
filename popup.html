@@ -3,10 +3,37 @@
   <head>
     <title>Email Formality Extension</title>
   </head>
+
   <body>
     <h1>Email Formality Extension</h1>
-    <!-- will put dropdown menu options here later. -->
-    <p>How can I help you today?</p>
+    <!-- Step 1: Context of Email (Context dropdown below)-->
+    <p>Let's setup your email perfectly!</p>
+    <label for="emailcontext" title="Choose the main goal of your email so we can structure the template correctly.">What will this be for? *</label>
+    <select id="emailcontext">
+        <option value="None">--select an option--</option>
+        <option value="Meeting" title="Use this to ask for a specific date and time to talk.">Meeting: Schedule a meeting or call</option>
+        <option value="Inquiry" title="Use this when you are stuck and need someone to give you an answer.">Inquiry: Ask a question/Request information</option>
+        <option value="Update" title="Use this just to keep someone in the loop. No action required from them.">Update: Provide a project update/FYI</option>
+    </select>
+
+    <br><br>
+    <!-- Step 2: Formality -->
+    <div id="emailformalitySection" style="display: none;">
+      <label for="emailformality" title="Select the level of professionalism needed based on your relationship with the recipient.">Who will read this? *</label>
+      <select id="emailformality">
+          <option value="None">--select an option--</option>
+          <option value="Semi-Formal" title="Best for regular colleagues, classmates, or people you speak with daily.">Semi-Formal (coworkers, peers)</option>
+          <option value="Formal" title="Best for professors, managers, or professional contacts you are reaching out to for the first time.">Formal (Managers, Professors)</option>
+          <option value="Very-Formal" title="Best for official records, entire departments, or executive leadership.">Very-Formal (Organizations, Executives)</option>
+      </select>
+    </div>
+
+    <br><br>
+    
+    <!-- The Action Button -->
+    <div id="buttonSection" style="display: none;">
+      <button id="formatEmailBtn">Format Email</button>
+    </div>
     <script src="popup.js"></script>
   </body>
 </html>
