@@ -1,0 +1,93 @@
+/* --- 1. THE COLOR ENGINE (Light Mode Default) --- */
+:root {
+    --bg-color: #f3f4f6;
+    --card-color: #ffffff;
+    --text-primary: #111827;
+    --text-secondary: #4b5563;
+    --accent-color: #2563eb; /* Clean Tech Blue */
+    --accent-hover: #1d4ed8;
+    --border-color: #e5e7eb;
+}
+
+/* --- 2. AUTOMATIC DARK MODE OVERRIDE --- */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #111827; /* Deep Matte Black/Gray */
+        --card-color: #1f2937;
+        --text-primary: #f9fafb;
+        --text-secondary: #9ca3af;
+        --accent-color: #3b82f6; 
+        --accent-hover: #60a5fa;
+        --border-color: #374151;
+    }
+}
+
+/* --- 3. BASE BODY STYLING --- */
+body {
+    width: 320px; /* Standard extension width */
+    margin: 0;
+    padding: 16px;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+/* --- 4. DROPDOWN MENUS (The Clean Box Look) --- */
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    background-color: var(--card-color);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px; /* Soft, modern corners */
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+select:focus {
+    border-color: var(--accent-color);
+}
+
+label {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* --- 5. THE PREMIUM BUTTON --- */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* Subtle floating shadow */
+}
+
+button:hover {
+    background-color: var(--accent-hover);
+}
+
+button:active {
+    transform: scale(0.98); /* Satisfying click animation */
+}
