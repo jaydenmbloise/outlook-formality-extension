@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Formality Template Injector",
   "version": "1.0",
-  "description": "Injects context-specific templates into Outlook Web.",
+  "description": "Injects context-specific templates into Outlook Web & Gmail.",
   "permissions": [
     "activeTab",
     "scripting"
@@ -10,9 +10,23 @@
   "host_permissions": [
     "*://outlook.live.com/*",
     "*://outlook.office.com/*",
-    "*://outlook.office365.com/*"
+    "*://outlook.office365.com/*",
+    "*://outlook.cloud.microsoft/*",
+    "*://mail.google.com/*"
   ],
   "action": {
     "default_popup": "popup.html"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://outlook.live.com/*",
+        "*://outlook.office.com/*",
+        "*://outlook.office365.com/*",
+        "*://outlook.cloud.microsoft/*",
+        "*://mail.google.com/*"
+      ],
+      "js": ["content.js"]
+    }
+  ]
 }
