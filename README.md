@@ -13,3 +13,7 @@ A lightweight, cross-platform Chrome Extension engineered to streamline professi
 2. Open Google Chrome and navigate to `chrome://extensions/`.
 3. Toggle **Developer mode** on in the top right corner.
 4. Click **Load unpacked** and select the directory containing the extension files.
+<img width="179" height="156" alt="Screenshot 2026-09-29 141623" src="https://github.com/user-attachments/assets/f3c8df9a-d88d-4c42-9f68-34ac9ba4ff29" />
+<img width="176" height="169" alt="Screenshot 2026-09-29 141641" src="https://github.com/user-attachments/assets/db372ab3-dbf2-4a01-9dfe-2bf7ae65f845" />
+<img width="281" height="242" alt="Screenshot 2026-09-29 142714" src="https://github.com/user-attachments/assets/c2d88c84-c532-49dd-94a3-edcb921117e2" />
+<img width="336" height="215" alt="Screenshot 2026-09-29 142735" src="https://github.com/user-attachments/assets/16caa6c9-a929-4438-9633-d394884b4578" />
