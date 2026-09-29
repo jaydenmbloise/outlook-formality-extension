@@ -1,37 +1,58 @@
-// variables for getting email context and formality dropdowns to become reactive
+// Variables for dropdowns and sections
 const contextDropdown = document.getElementById("emailcontext");
 const formalityDropdown = document.getElementById("emailformality");
 const formalitySection = document.getElementById("emailformalitySection");
 const buttonSection = document.getElementById("buttonSection");
-// Hiding the context dropdown
-    contextDropdown.addEventListener("change", function() {
-        const selectedContext = contextDropdown.value;
-        if (selectedContext !== "None") {
-            formalitySection.style.display = "block"; 
-        } else {
-            formalitySection.style.display = "none";
-            buttonSection.style.display = "none"; 
-            formalityDropdown.value = "None";
+
+// --- 1. THE LOADER: Read from the database when popup opens ---
+document.addEventListener("DOMContentLoaded", function() {
+    chrome.storage.local.get(["savedContext", "savedFormality"], function(result) {
+        if (result.savedContext && result.savedContext !== "None") {
+            contextDropdown.value = result.savedContext;
+            formalitySection.style.display = "block";
         }
-    });
-// Hiding the formality dropdown until a option is selected
-    formalityDropdown.addEventListener("change", function() {
-        const selectedFormality = formalityDropdown.value;
-        if (selectedFormality !== "None") {
+        if (result.savedFormality && result.savedFormality !== "None") {
+            formalityDropdown.value = result.savedFormality;
             buttonSection.style.display = "block";
-        } else {
-            buttonSection.style.display = "none";
         }
     });
+});
+
+// --- 2. THE SAVER: Update database when Context changes ---
+contextDropdown.addEventListener("change", function() {
+    const selectedContext = contextDropdown.value;
+    
+    // Save the choice to Chrome's local storage
+    chrome.storage.local.set({ savedContext: selectedContext });
+
+    if (selectedContext !== "None") {
+        formalitySection.style.display = "block"; 
+    } else {
+        formalitySection.style.display = "none";
+        buttonSection.style.display = "none"; 
+        formalityDropdown.value = "None";
+        chrome.storage.local.set({ savedFormality: "None" }); // Clear saved formality
+    }
+});
+
+// --- 3. THE SAVER: Update database when Formality changes ---
+formalityDropdown.addEventListener("change", function() {
+    const selectedFormality = formalityDropdown.value;
+    
+    // Save the choice to Chrome's local storage
+    chrome.storage.local.set({ savedFormality: selectedFormality });
+
+    if (selectedFormality !== "None") {
+        buttonSection.style.display = "block";
+    } else {
+        buttonSection.style.display = "none";
+    }
+});
     
 const formatBtn = document.getElementById("formatEmailBtn");
 formatBtn.addEventListener ("click", function() {
     const finalContext = contextDropdown.value;
     const finalFormality = formalityDropdown.value;
-    console.log("Success! Here is what the user chose:");
-    console.log("Context:", finalContext);
-    console.log("Formality:", finalFormality);
-
     let emailTemplate = "";
     // --- INQUIRY TEMPLATES ---
     if (finalContext === "Inquiry" && finalFormality === "Semi-Formal") {
